@@ -1,0 +1,10 @@
+ID ,Genus,Species,Tooth,ToothCat,Age,Sex,Defects,Major Defects,Location, Mass (kg),Euthanasia,Urbanity
+B1-03,Papio,ursinus,URC,C,Adult,M,7.5,3,NP,31.95,EUP,Less
+B6-03,Papio,ursinus,URC,C,Adult,M,11.5,5,NP,29.53,EUP,Less
+B2-02,Papio,ursinus,URC,C,Adult,M,3.5,0,SP,29.4,EUW,Urban
+B5-02,Papio,ursinus,URC,C,Adult,M,9,0,NP,30.39,EUP,Less
+B3-01,Papio,ursinus,URC,C,Adult,M,16.5,2,NP,31.34,EUP,Less
+B1-01,Papio,ursinus,URC,C,Adult,M,12,0,SP,28,EUP,Urban
+B6-02,Papio,ursinus,URC,C,SubAdult,M,16.5,4,NP,27.75,EUW,Less
+B3-02,Papio,ursinus,ULC,C,Adult,M,14.5,0,SP,34.33,EUP,Urban
+B3-03,Papio,ursinus,ULC,C,SubAdult,M,7.5,0,SP,21.78,EUW,Urban

@@ -1,0 +1,38 @@
+ID ,Genus,Species,Subspecies,Tooth,ToothCat,Sex,Mean Score,Researcher 1 Score,Researcher 2 Score,Data Set,Year,Adult
+Troop 1 D,Papio,ursinus,,LLC,C,M,4,3,5,Ohio State,1993,X
+B2-05,Papio,ursinus,,LLC,C,M,5,5,X,Ohio State,X,X
+Troop 1 no ID,Papio,ursinus,,LRC,C,F,1.5,1,3,Ohio State,1993,X
+B1-03,Papio,ursinus,,URC,C,M,10,7,13,Ohio State,2017,Yes
+B6-03,Papio,ursinus,,URC,C,M,11.5,10,12,Ohio State,2012,Yes
+B2-02,Papio,ursinus,,URC,C,M,3.5,5,2,Ohio State,2016,Yes
+B3-03,Papio,ursinus,,ULC,C,M,7.5,10,5,Ohio State,2015,No
+B5-02,Papio,ursinus,,URC,C,M,9,10,8,Ohio State,2016,Yes
+Troop 1 F,Papio,ursinus,,URC,C,M,5,3,7,Ohio State,1993,X
+B1-01,Papio,ursinus,,URC,C,M,12,12,X,Ohio State,2017,Yes
+B6-02,Papio,ursinus,,URC,C,M,16.5,17,16,Ohio State,X,Yes
+B3-01,Papio,ursinus,,URC,C,M,17,16,18,Ohio State,2012,Yes
+Troop 1 B,Papio,ursinus,,ULC,C,F,2,2,X,Ohio State,1993,X
+B3-02,Papio,ursinus,,ULC,C,M,14.5,16,13,Ohio State,2015,Yes
+Troop 1 E,Papio,ursinus,,ULC,C,M,9,9,X,Ohio State,1993,X
+AMNH-3822,Papio,cynocephalus,,URC,C,M,21,21,21,AMNH,1892,Yes
+AMNH-90419,Papio,hamadryas,,ULC,C,M,8.5,9,8,AMNH,1928,Yes
+AMNH-187371,Papio,cynocephalus,ibeanus,ULC,C,M,6.5,7,6,AMNH,1960,Yes
+AMNH-52677,Papio,anubis,,ULC,C,M,8.5,9,8,AMNH,1911,Yes
+AMNH-54227,Papio,anubis,,URC,C,M,10,9,11,AMNH,1909,Yes
+AMNH-52679,Papio,anubis,,ULC,C,F,3,3,3,AMNH,1913,Yes
+AMNH-179127,Papio,anubis,,URC,C,M,21.5,14,29,AMNH,1958,Yes
+AMNH-80774,Papio,ursinus,ruacana,ULC,C,M,18,17,19,AMNH,1925,Yes
+AMHH-52676,Papio,anubis,,LLC,C,M,11.5,10,13,AMNH,1913,Yes
+AMNH-55449,Papio,cynocephalus,cynocephalus,LRC,C,F,2.5,5,0,AMNH,1921,Yes
+AMNH-216247,Papio,ursinus,griseipes,LRC,C,F,7,7,7,AMNH,1968,Yes
+AMNH-82097,Papio,anubis,,LLC,C,?,6.5,5,8,AMNH,1926,Yes
+AMNH-114154,Papio,anubis,,LRC,C,F,9,7,11,AMNH,1936,Yes
+AMNH-187369,Papio,cynocephalus,ibeanus,LRC,C,M,6,8,4,AMNH,1960,Yes
+SMITH-175015,Papio,anubis,,ULC,C,M,4.5,3,6,SMITH,X,Yes
+SMITH-293174,Papio,anubis,,URC,C,M,22.5,23,22,SMITH,1928,Yes
+SMITH-354993,Papio,anubis,,ULC,C,M,12.5,17,8,SMITH,1965,Yes
+SMITH-182207,Papio ,anubis,,LRC,C,M,9.5,10,9,SMITH,1911,Yes
+SMITH-236976,Papio,anubis,,LLC,C,M,10.5,10,11,SMITH,1920,Yes
+SMITH-216605,Papio,anubis,,ULC,C,M,20,16,24,SMITH,X,Yes
+SMITH-162899,Papio,anubis,,ULC,C,M,14.5,14,15,SMITH,1909,Yes
+SMITH-236976,Papio,anubis,,LLC,C,M,10.5,10,11,SMITH,1920,Yes
