@@ -1,4 +1,4 @@
-All <- read_csv("ALL CANINES")
+All <- read_csv("LEH_Data_All_Canines.csv")
 All <- filter(All, Adult != "No")
 All$Mean <- as.numeric(All$Mean)
 Year <- filter(All, Year != "X")
