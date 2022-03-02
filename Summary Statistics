@@ -1,3 +1,45 @@
+library(tidyverse)
+library(ggplot2)
+
+# Read csv, filter out missing data, convert to numeric
+Canines <- read_csv("severity_canine_data.csv")
+Canines$Defects <- as.numeric(Canines$Defects)
+Canines$`Mass (kg)` <- as.numeric(Canines$`Mass (kg)`)
+
+# Plots for Defect frequency between nat. park and non nat. park
+ggplot(Canines, aes(x = Defects, fill = Location, color = Location)) + 
+  geom_histogram(position = "identity")
+Canines %>% filter(Location == "NP") %>% ggplot(aes(x = Defects)) + geom_histogram()
+Canines %>% filter(Location == "SP") %>% ggplot(aes(x = Defects)) + geom_histogram()
+
+# Plots are the exact same for Urban/Not Urban 
+
+
+
+# Plotting Defects against Mass
+ggplot(Canines, aes(x=Defects, y=`Mass (kg)`), color = Location) + 
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE)
+
+# correlation coefficient
+cor(Canines$Defects, Canines$`Mass (kg)`)
+cor(Canines$Defects, Canines$`Mass (kg)`)^2
+# correlation = 0.0547
+
+
+# residual plot
+resid <- resid(lm(`Mass (kg)` ~ Defects, data = Canines))
+plot(resid)
+# no real relation
+
+# Euthanasia
+ggplot(Canines, aes(x = Defects, fill = Euthanasia, color = Euthanasia)) + 
+  geom_histogram(position = "identity")
+Canines %>% filter(Euthanasia == "EUP") %>% ggplot(aes(x = Defects)) + geom_histogram()
+Canines %>% filter(Euthanasia == "EUW") %>% ggplot(aes(x = Defects)) + geom_histogram()
+
+
+
 All <- read_csv("LEH_Data_All_Canines.csv")
 All <- filter(All, Adult != "No")
 All$Mean <- as.numeric(All$Mean)
