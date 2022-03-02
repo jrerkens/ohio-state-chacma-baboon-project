@@ -1,0 +1,50 @@
+All <- read_csv("ALL CANINES")
+All <- filter(All, Adult != "No")
+All$Mean <- as.numeric(All$Mean)
+Year <- filter(All, Year != "X")
+Year$Year <- as.numeric(Year$Year)
+
+
+
+ggplot(Year, aes(x = Year, y = Mean, color = `Data Set`)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# by species
+
+ggplot(All, aes(x = Species, y = Mean)) + 
+  geom_dotplot(binaxis = 'y', stackdir = 'center')
+
+# mann whitney parametric test (repping osu lol)
+
+wilcox.test(filter(All, Species == "anubis")$Mean, 
+            filter(All, Species == "ursinus")$Mean, alternative = "greater")
+
+# p = 0.134
+# ties so not exact p value (gonna do a t test)
+
+t.test(filter(All, Species == "anubis")$Mean, 
+filter(All, Species == "ursinus")$Mean, alternative = "greater")
+# p = 0.11
+
+# removing females
+wilcox.test(filter(All, Species == "anubis" & Sex != "F")$Mean, 
+            filter(All, Species == "ursinus" & Sex != "F")$Mean, alternative = "greater")
+# p = 0.199
+t.test(filter(All, Species == "anubis" & Sex != "F")$Mean, 
+       filter(All, Species == "ursinus" & Sex != "F")$Mean, alternative = "greater")
+# p = 0.16
+
+# bootstrap ?
+NMC <- 1000
+t_test <- c()
+for (i in 1:NMC){
+  anubis <- sample(filter(All, Species == "anubis")$Mean,
+                   size = length(filter(All, Species == "anubis")), replace = TRUE)
+  ursinus <- sample(filter(All, Species == "ursinus")$Mean,
+                    size = length(filter(All, Species == "ursinus")), replace = TRUE)
+  t_test[i] <- t.test(anubis, ursinus, alternative = "greater")$p.value
+}
+t_test <- as.numeric(t_test)
+
+# mean is 0.197
