@@ -1,0 +1,84 @@
+# example posterior rjags MCMC sampling procedure, hypothesis 3 on "Comparing Bayesian and frequentist analyses of stress in Papio ursinus and P. anubis
+
+
+```{r, message = FALSE}
+# i prefer tidyverse, rjags needs coda to work
+library(tidyverse)
+library(rjags)
+library(coda)
+library(BayesFactor)
+```
+
+
+### JAGS Initializations
+
+```{r}
+n_iter <- 20000
+n_burnin <- 5000
+n_adapt <- 5000
+
+natpark_severity <- natpark$`Major Defects`
+southpen_severity <- southpen$`Major Defects`
+n1 <- length(natpark_severity)
+n2 <- length(southpen_severity)
+
+natpark_mean <- round(mean(natpark_severity))
+southpen_mean <- round(mean(southpen_severity))
+
+jags_data <- list(n1 = n1, n2 = n2, natpark = natpark_severity, southpen = southpen_severity)
+jags_init <- list(lambda1 = natpark_mean, lambda2 = southpen_mean)
+```
+
+### JAGS Algorithm
+
+```{r}
+set.seed(812)
+jags_model <- "model{
+  # likelihood
+  for(i in 1:n1){
+  natpark[i] ~ dpois(lambda1)
+  }
+  for(i in n2){
+  southpen[i] ~ dpois(lambda2)
+  }
+  # prior
+  lambda1 ~ dgamma(2.8, 1)
+  lambda2 ~ dgamma(1, 1)
+}"
+
+fit <- jags.model(textConnection(jags_model),
+               data = jags_data, inits = jags_init , 
+               n.chains = 1, n.adapt = n_adapt)
+fit_samples <- coda.samples(fit, c("lambda1", "lambda2"), n.iter = n_iter) %>% 
+  window(start = n_burnin + n_adapt)
+```
+
+### JAGS Results
+
+```{r}
+set.seed(812)
+plot(window(fit_samples), density = FALSE)
+plot(window(fit_samples), trace = FALSE)
+summary(window(fit_samples))
+fit_samples <- as.data.frame(as.array(fit_samples))
+
+# ggplot setup
+
+national_park_lambda <-tibble(lambda = fit_samples$lambda1,
+                              location = rep("National Park", length(fit_samples$lambda1)))
+
+peninula_lambda <- tibble(lambda = fit_samples$lambda2,
+                          location = rep("Western Cape", length(fit_samples$lambda2)))
+
+lambdas <- full_join(national_park_lambda, peninula_lambda)
+lambdas %>% ggplot() + theme_wsj() +
+  geom_density(aes(x = lambda, group = location, fill = location), alpha = 0.5) + 
+  theme(text = element_text(size = 10)) +
+  ggtitle("Hypothesis 3: Posterior probability distributions of expected\nnumber of severe LEH defects in Cape chacma baboons") +
+  theme(title = element_text(size = 10))
+  
+# credible interval
+
+fit_sample_diff <- c(fit_samples$lambda1 - fit_samples$lambda2)
+quantile(fit_sample_diff, probs = c(0.025, 0.975))
+```
