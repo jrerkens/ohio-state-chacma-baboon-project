@@ -22,8 +22,8 @@ southpen_severity <- southpen$`Major Defects`
 n1 <- length(natpark_severity)
 n2 <- length(southpen_severity)
 
-natpark_mean <- round(mean(natpark_severity))
-southpen_mean <- round(mean(southpen_severity))
+natpark_mean <- 3
+southpen_mean <- 1
 
 jags_data <- list(n1 = n1, n2 = n2, natpark = natpark_severity, southpen = southpen_severity)
 jags_init <- list(lambda1 = natpark_mean, lambda2 = southpen_mean)
@@ -42,7 +42,7 @@ jags_model <- "model{
   southpen[i] ~ dpois(lambda2)
   }
   # prior
-  lambda1 ~ dgamma(2.8, 1)
+  lambda1 ~ dgamma(3, 1)
   lambda2 ~ dgamma(1, 1)
 }"
 
